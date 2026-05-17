@@ -28,6 +28,7 @@ export default function Navbar({ isDark, toggleTheme }: NavbarProps) {
   const navLinks = [
     { name: lang === 'uz' ? 'Bosh sahifa' : 'Home', href: '#home' },
     { name: lang === 'uz' ? 'Kurslar' : 'Courses', href: '#courses' },
+    { name: lang === 'uz' ? 'Ilova' : 'App', href: '#student-app' },
     { name: lang === 'uz' ? 'Natijalar' : 'Results', href: '#results' },
     { name: lang === 'uz' ? 'Ustozlar' : 'Teachers', href: '#teachers' },
     { name: lang === 'uz' ? 'FAQ' : 'FAQ', href: '#faq' },
@@ -61,7 +62,7 @@ export default function Navbar({ isDark, toggleTheme }: NavbarProps) {
         {/* Action Controls */}
         <div className="nav-actions">
           {/* Language Switcher Dropdown */}
-          <div className="lang-dropdown-wrapper" style={{ position: 'relative' }}>
+          <div className="lang-dropdown-wrapper hide-on-mobile" style={{ position: 'relative' }}>
             <button 
               onClick={() => setLangDropdownOpen(!langDropdownOpen)}
               className={`action-btn ${langDropdownOpen ? 'active' : ''}`}
@@ -164,7 +165,7 @@ export default function Navbar({ isDark, toggleTheme }: NavbarProps) {
           {/* Theme Switcher */}
           <button 
             onClick={toggleTheme} 
-            className="action-btn"
+            className="action-btn hide-on-mobile"
             title="Toggle Light/Dark Theme"
           >
             {isDark ? <Sun size={18} /> : <Moon size={18} />}

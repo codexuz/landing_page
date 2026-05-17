@@ -87,6 +87,7 @@ export default function Footer() {
           <ul className="footer-links-list">
             <li><a href="#home">Bosh sahifa</a></li>
             <li><a href="#courses">O'quv kurslari</a></li>
+            <li><a href="#student-app">Student ilovasi</a></li>
             <li><a href="#results">O'quvchilar natijalari</a></li>
             <li><a href="#teachers">Bizning ustozlarimiz</a></li>
             <li><a href="#faq">Tez-tez savollar</a></li>

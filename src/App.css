@@ -9,7 +9,7 @@
   left: 0;
   width: 100%;
   z-index: 100;
-  padding: 24px 0;
+  padding: 20px 0;
   transition: all var(--transition-normal);
   background: transparent;
 }
@@ -21,6 +21,32 @@
   -webkit-backdrop-filter: blur(20px);
   border-bottom: 1px solid var(--glass-border);
   box-shadow: var(--glass-shadow);
+}
+
+@media (min-width: 992px) {
+  .navbar-container {
+    top: 24px;
+    width: 90%;
+    max-width: 1200px;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    border-radius: 100px;
+    padding: 14px 0;
+    background: rgba(9, 9, 11, 0.4);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+  }
+  
+  .navbar-container.scrolled {
+    top: 16px;
+    padding: 12px 0;
+    background: var(--glass-bg);
+    border-radius: 100px;
+    border: 1px solid var(--glass-border);
+    box-shadow: 0 10px 40px rgba(0,0,0,0.25);
+  }
 }
 
 .navbar-content {
@@ -70,9 +96,21 @@
   gap: 32px;
 }
 
+@media (min-width: 992px) {
+  .desktop-nav {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+}
+
 @media (max-width: 992px) {
   .desktop-nav {
     display: none;
+  }
+  
+  .hide-on-mobile {
+    display: none !important;
   }
 }
 
@@ -2033,4 +2071,74 @@
 .footer-terms-links a:hover {
   color: #9CA3AF;
 }
+
+/* ==========================================================================
+   STUDENT APP SECTION STYLES
+   ========================================================================== */
+.student-app-section {
+  padding: 100px 0;
+  position: relative;
+}
+
+.glow-blob-4 {
+  width: 400px;
+  height: 400px;
+  background: rgba(0, 122, 255, 0.04);
+  top: 20%;
+  right: -10%;
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  z-index: 0;
+  pointer-events: none;
+}
+
+.app-selector-card:hover {
+  transform: translateY(-2px);
+  border-color: rgba(0, 122, 255, 0.3) !important;
+  box-shadow: 0 4px 20px rgba(0, 122, 255, 0.05);
+}
+
+.app-selector-card.active {
+  box-shadow: 0 4px 25px rgba(0, 122, 255, 0.08);
+}
+
+.phone-frame::-webkit-scrollbar {
+  width: 0px;
+}
+
+.phone-frame {
+  scrollbar-width: none;
+}
+
+/* Download buttons and layout */
+.app-download-btn {
+  background: var(--primary);
+  color: white !important;
+  padding: 14px 24px;
+  border-radius: 12px;
+  font-weight: 600;
+  font-size: 15px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: all var(--transition-fast);
+  box-shadow: 0 4px 20px rgba(0, 122, 255, 0.25);
+  border: none;
+}
+
+.app-download-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 25px rgba(0, 122, 255, 0.35);
+  opacity: 0.95;
+}
+
+.app-download-store-btn:hover {
+  transform: translateY(-2px);
+  border-color: var(--primary) !important;
+  box-shadow: 0 4px 15px rgba(0, 122, 255, 0.2) !important;
+  background: rgba(255, 255, 255, 0.04) !important;
+}
+
+
 

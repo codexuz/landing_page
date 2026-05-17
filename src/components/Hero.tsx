@@ -1,4 +1,4 @@
-import { ArrowRight, Play, BookOpen, Star, Award, Code } from 'lucide-react';
+import { ArrowRight, Play, Star } from 'lucide-react';
 import { motion } from 'framer-motion';
 
 export default function Hero() {
@@ -22,144 +22,92 @@ export default function Hero() {
     },
   };
 
-  const floatVariants = (duration: number, delay: number, yRange: number = 15): any => ({
-    animate: {
-      y: [0, -yRange, 0],
-      transition: {
-        duration: duration,
-        repeat: Infinity,
-        repeatType: "reverse" as const,
-        ease: "easeInOut" as const,
-        delay: delay,
-      },
-    },
-  });
-
   return (
-    <section id="home" className="hero-section">
+    <section 
+      id="home" 
+      className="hero-section"
+      style={{
+        position: 'relative',
+        backgroundImage: "url('/bg.png')",
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        backgroundRepeat: 'no-repeat',
+      }}
+    >
+      {/* High-fidelity overlay to keep text extremely crisp & readable */}
+      <div 
+        style={{
+          position: 'absolute',
+          top: 0,
+          left: 0,
+          width: '100%',
+          height: '100%',
+          background: 'linear-gradient(to bottom, rgba(9, 9, 11, 0.72) 0%, rgba(9, 9, 11, 0.88) 100%)',
+          zIndex: 0,
+          pointerEvents: 'none'
+        }}
+      />
       {/* Decorative Glow Blobs */}
-      <div className="glow-blob glow-blob-1"></div>
-      <div className="glow-blob glow-blob-2"></div>
-      <div className="grid-overlay"></div>
+      <div className="glow-blob glow-blob-1" style={{ zIndex: 1 }}></div>
+      <div className="glow-blob glow-blob-2" style={{ zIndex: 1 }}></div>
+      <div className="grid-overlay" style={{ zIndex: 1 }}></div>
 
-      <div className="container hero-grid">
+      <div className="container hero-grid" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', minHeight: '80vh', padding: '120px 0' }}>
         {/* Hero Left: Animated Text & CTAs */}
-        <motion.div 
+        <motion.div
           className="hero-text-content"
           variants={containerVariants}
           initial="hidden"
           animate="visible"
+          style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center', maxWidth: '800px', zIndex: 2 }}
         >
-          <motion.div className="hero-badge-wrap" variants={itemVariants}>
+          <motion.div className="hero-badge-wrap" variants={itemVariants} style={{ marginBottom: '16px' }}>
             <span className="badge badge-premium">
               <Star size={12} className="star-icon" />
-              Toshkentdagi Eng Premium Markaz
+              Haqiqiy ingliz muhiti
             </span>
           </motion.div>
 
-          <motion.h1 className="hero-title" variants={itemVariants}>
+          <motion.h1 
+            className="hero-title" 
+            variants={itemVariants}
+            style={{ 
+              fontSize: 'clamp(32px, 6vw, 64px)', 
+              fontWeight: '800', 
+              lineHeight: '1.2', 
+              color: '#ffffff',
+              marginBottom: '20px'
+            }}
+          >
             IMPULSE STUDY - <br />
             <span className="gradient-text">WHERE A BRIGHT FUTURE STARTS</span>
           </motion.h1>
 
-          <motion.p className="hero-subtitle" variants={itemVariants}>
+          <motion.p 
+            className="hero-subtitle" 
+            variants={itemVariants}
+            style={{ 
+              fontSize: 'clamp(15px, 2.5vw, 18px)', 
+              color: 'rgba(255,255,255,0.85)', 
+              lineHeight: '1.6', 
+              maxWidth: '640px', 
+              marginBottom: '32px'
+            }}
+          >
             Chet tillari, Xalqaro sertifikatlar (IELTS, SAT, CEFR) va zamonaviy IT fanlarini mukammal o'rganing. Kelajak yetakchilarini biz tarbiyalaymiz!
           </motion.p>
 
-          <motion.div className="hero-ctas" variants={itemVariants}>
-            <a href="#courses" className="glow-btn hero-btn-primary">
+          <motion.div className="hero-ctas" variants={itemVariants} style={{ display: 'flex', gap: '16px', flexWrap: 'wrap', justifyContent: 'center' }}>
+            <a href="#courses" className="glow-btn hero-btn-primary" style={{ textDecoration: 'none' }}>
               Kurslarni Ko'rish
               <ArrowRight size={18} />
             </a>
-            <a href="#booking" className="hero-btn-secondary glass">
+            <a href="#booking" className="hero-btn-secondary glass" style={{ textDecoration: 'none' }}>
               <Play size={16} fill="currentColor" />
               Bepul Darsga Yozilish
             </a>
           </motion.div>
-
-          {/* Quick trust proofs */}
-          <motion.div className="hero-trust-proofs" variants={itemVariants}>
-            <div className="trust-item">
-              <div className="avatar-group">
-                <div className="avatar">A</div>
-                <div className="avatar">B</div>
-                <div className="avatar">C</div>
-                <div className="avatar-plus">+9k</div>
-              </div>
-              <p className="trust-text">
-                <strong>11,590+</strong> muvaffaqiyatli talabalar
-              </p>
-            </div>
-          </motion.div>
         </motion.div>
-
-        {/* Hero Right: Interactive Animations with floating elements */}
-        <div className="hero-visual-content">
-          <div className="hero-main-circle">
-            {/* Inner rotating gradient orbit */}
-            <motion.div 
-              className="hero-circle-orbit"
-              animate={{ rotate: 360 }}
-              transition={{ duration: 40, repeat: Infinity, ease: "linear" as const }}
-            ></motion.div>
-            
-            {/* Center Visual: premium abstract book or student model mock */}
-            <div className="hero-circle-center glass">
-              <BookOpen size={64} className="center-icon" />
-              <div className="pulse-ring"></div>
-              <div className="pulse-ring ring-2"></div>
-            </div>
-
-            {/* Floating Course Badges */}
-            <motion.div 
-              className="float-badge float-badge-1 glass"
-              variants={floatVariants(6, 0)}
-              animate="animate"
-            >
-              <span className="badge-icon badge-orange">IELTS</span>
-              <div className="badge-info">
-                <span className="badge-name">IELTS 8.5</span>
-                <span className="badge-desc">Xalqaro daraja</span>
-              </div>
-            </motion.div>
-
-            <motion.div 
-              className="float-badge float-badge-2 glass"
-              variants={floatVariants(8, 1, 20)}
-              animate="animate"
-            >
-              <Code size={18} className="badge-icon badge-blue-icon" />
-              <div className="badge-info">
-                <span className="badge-name">Dasturlash</span>
-                <span className="badge-desc">Frontend & Python</span>
-              </div>
-            </motion.div>
-
-            <motion.div 
-              className="float-badge float-badge-3 glass"
-              variants={floatVariants(7, 2, 12)}
-              animate="animate"
-            >
-              <Award size={18} className="badge-icon badge-green-icon" />
-              <div className="badge-info">
-                <span className="badge-name">SAT & CEFR</span>
-                <span className="badge-desc">C1 & 1500+</span>
-              </div>
-            </motion.div>
-
-            <motion.div 
-              className="float-badge float-badge-4 glass"
-              variants={floatVariants(9, 0.5, 18)}
-              animate="animate"
-            >
-              <span className="badge-icon badge-pink">KIDS</span>
-              <div className="badge-info">
-                <span className="badge-name">Kids English</span>
-                <span className="badge-desc">O'yin orqali</span>
-              </div>
-            </motion.div>
-          </div>
-        </div>
       </div>
     </section>
   );

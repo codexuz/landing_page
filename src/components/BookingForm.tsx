@@ -156,7 +156,7 @@ export default function BookingForm() {
                 exit={{ opacity: 0, y: -20 }}
                 transition={{ duration: 0.3 }}
               >
-                <h3 className="form-heading">Sinfda a'zo bo'ling</h3>
+                <h3 className="form-heading">Formani to'ldirish</h3>
                 <p className="form-subheading">Ma'lumotlaringizni qoldiring, administrator 15 daqiqada bog'lanadi.</p>
 
                 {error && (
